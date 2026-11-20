@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--自己部署的服务器经常是局域网里的http地址,SDK的本机HTTP服务也是http,所以允许明文HTTP-->
+<network-security-config>
+    <base-config cleartextTrafficPermitted="true" />
+</network-security-config>

@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<paths>
+    <!--发送文件时先复制到缓存目录下的send_file,改成"歌名 - 歌手.扩展名"再发送,见ShareUtil-->
+    <cache-path
+        name="send_file"
+        path="send_file/" />
+</paths>
