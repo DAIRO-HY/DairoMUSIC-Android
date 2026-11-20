@@ -1,0 +1,45 @@
+pipeline {
+    agent any
+
+    environment {
+        REPO = "DAIRO-HY/DairoMUSIC-Android"
+        BRANCH = "main"
+        PROJECT_DIR = "/root/develop_tool/project"
+        PROJECT_NAME = "DairoMUSIC-Android"
+    }
+
+    stages {
+        stage("拉取代码") {
+            steps {
+                script{
+                    if(!fileExists("${env.PROJECT_DIR}")){
+                        sh "mkdir -p ${env.PROJECT_DIR}"
+                    }
+                    dir("${env.PROJECT_DIR}"){
+                        if(!fileExists("${env.PROJECT_NAME}")){
+                            def cloneUrl = "https://${env.GITHUB_TOKEN}@github.com/${env.REPO}.git"
+                            echo "克隆地址:${cloneUrl}"
+                            sh "git clone --branch ${env.BRANCH} ${cloneUrl}"
+                        }
+                    }
+                }
+                dir("${env.PROJECT_DIR}/${env.PROJECT_NAME}"){
+
+                    //撤销所有修改
+                    sh "git reset --hard HEAD"
+
+                    //删除所有未被跟踪的文件和目录
+                    // sh "git clean -fd"
+                    sh "git pull"
+                }
+            }
+        }
+        stage("编译") {
+            steps {
+                dir("${env.PROJECT_DIR}/${env.PROJECT_NAME}"){
+                    sh "./document/build/build_all.sh"
+                }
+            }
+        }
+    }
+}

@@ -20,8 +20,22 @@
 
 签名信息不在代码里，按下面的顺序读取，都没有时 debug 使用默认的调试签名，release 生成未签名的 APK：
 
-1. 环境变量 `DAIRO_KEYSTORE_FILE`、`DAIRO_KEYSTORE_PASSWORD`、`DAIRO_KEY_ALIAS`、`DAIRO_KEY_PASSWORD`（Jenkins 用，见 `Jenkinsfile`）
+1. 环境变量 `DAIRO_MUSIC_KEYSTORE_FILE`、`DAIRO_MUSIC_KEYSTORE_PASSWORD`、`DAIRO_MUSIC_KEY_ALIAS`、`DAIRO_MUSIC_KEY_PASSWORD`（编译服务器用）
 2. 项目根目录的 `keystore.properties`（本机用，格式见 `keystore.properties.example`，不提交到 git）
+
+## 发布
+
+编译脚本在 `document/build/`，Jenkins 在 Linux 编译机上执行 `document/build/build_all.sh`：
+
+| 脚本 | 说明 |
+|---|---|
+| `build_android.sh` | 编译正式版 APK，输出到 `build/DairoMUSIC-{版本号}.apk`。第一次运行时自动安装 JDK 25 和 Android SDK 到 `~/develop_tool` |
+| `build_github.sh` | 用版本号创建标签和 GitHub Release，上传 APK；Release 里已有同名文件时先删除再上传，可以重复执行 |
+| `build_all.sh` | 依次执行上面两个脚本 |
+
+需要的环境变量：签名的 4 个环境变量（见上一节），以及 `GITHUB_TOKEN`（需要仓库的 Contents 读写权限）。
+上传失败时可以设置 `ONLY_UPLOAD=true` 只执行 `build_github.sh`，不重新创建标签和编译。
+版本号取自 `app/build.gradle.kts` 里的 `versionName`。编译机需要安装 `curl`、`unzip`、`git`、`jq`。
 
 ## 和 iOS 版的差异
 
