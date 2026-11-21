@@ -11,7 +11,7 @@
 
 | 依赖 | 说明 | 引用方式 |
 |---|---|---|
-| [DairoUI_Android](https://github.com/DAIRO-HY/DairoUI_Android) | 设置页风格的 UI 组件、Toast、Loading、主题 | `../DairoUI_Android` 存在时直接引用本地源码（includeBuild），否则使用 jitpack |
+| [DairoUI_Android](https://github.com/DAIRO-HY/DairoUI_Android) | 设置页风格的 UI 组件、Toast、Loading、主题 | 通过 jitpack 引用 GitHub 上发布的版本 |
 | [DairoDFS](https://github.com/DAIRO-HY/DairoDFS) 的 Android SDK | 文件下载、边播边缓存、离线文件管理 | `app/libs/dairo-file-sdk-*.aar` |
 
 更新 SDK：在 DairoDFS 里执行 `./dairo-file-sdk/build.sh android`，把 `dairo-file-sdk/dist/android/` 下的 AAR 复制到 `app/libs/`（文件名变了时同时修改 `app/build.gradle.kts`）。
