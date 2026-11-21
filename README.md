@@ -2,6 +2,14 @@
 
 [DairoMUSIC](https://github.com/DAIRO-HY/DairoMUSIC) 的 Android 客户端，Jetpack Compose 编写。功能、界面和代码结构与 [DairoMUSIC-IOS](https://github.com/DAIRO-HY/DairoMUSIC-IOS) 保持一致，类名、包名、文件名一一对应，方便两边同步维护。
 
+## 截图
+
+| 发现 | 歌单 | 播放 | 音乐 | 我的 |
+|:---:|:---:|:---:|:---:|:---:|
+| <img src="document/screenshots/home.png" width="180"> | <img src="document/screenshots/list.png" width="180"> | <img src="document/screenshots/playing.png" width="180"> | <img src="document/screenshots/music.png" width="180"> | <img src="document/screenshots/mine.png" width="180"> |
+
+截图中的歌曲为 [Musopen](https://musopen.org) 的古典音乐录音。
+
 ## 运行环境
 
 - Android 8.0（API 26）及以上，支持手机和平板（arm64-v8a、armeabi-v7a、x86_64）
