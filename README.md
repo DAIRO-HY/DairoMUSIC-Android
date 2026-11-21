@@ -20,7 +20,7 @@
 
 签名信息不在代码里，按下面的顺序读取，都没有时 debug 使用默认的调试签名，release 生成未签名的 APK：
 
-1. 环境变量 `DAIRO_MUSIC_KEYSTORE_FILE`、`DAIRO_MUSIC_KEYSTORE_PASSWORD`、`DAIRO_MUSIC_KEY_ALIAS`、`DAIRO_MUSIC_KEY_PASSWORD`（编译服务器用）
+1. 环境变量 `DAIRO_KEYSTORE_FILE`、`DAIRO_KEYSTORE_PASSWORD`、`DAIRO_KEY_ALIAS`、`DAIRO_KEY_PASSWORD`（编译服务器用）
 2. 项目根目录的 `keystore.properties`（本机用，格式见 `keystore.properties.example`，不提交到 git）
 
 ## 发布

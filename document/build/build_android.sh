@@ -4,10 +4,10 @@
 #第一次运行时自动安装JDK和Android SDK到 ~/develop_tool,Gradle由项目里的gradlew自动下载
 #
 #签名需要的环境变量(在Jenkins里配置,不要写到脚本里):
-#  DAIRO_MUSIC_KEYSTORE_FILE      签名文件的路径
-#  DAIRO_MUSIC_KEYSTORE_PASSWORD  签名文件的密码
-#  DAIRO_MUSIC_KEY_ALIAS          密钥别名
-#  DAIRO_MUSIC_KEY_PASSWORD       密钥的密码
+#  DAIRO_KEYSTORE_FILE      签名文件的路径
+#  DAIRO_KEYSTORE_PASSWORD  签名文件的密码
+#  DAIRO_KEY_ALIAS          密钥别名
+#  DAIRO_KEY_PASSWORD       密钥的密码
 #没有设置时生成未签名的APK,这时直接报错退出,不能发布未签名的APK
 
 #遇到错误立即停止
@@ -92,8 +92,8 @@ yes | sdkmanager --licenses > /dev/null
 #--------------------------------------安装Android SDK--------------------------------------END
 
 #--------------------------------------编译APK--------------------------------------START
-if [ -z "$DAIRO_MUSIC_KEYSTORE_FILE" ]; then
-  echo "没有设置签名的环境变量DAIRO_MUSIC_KEYSTORE_FILE,不能编译正式版"
+if [ -z "$DAIRO_KEYSTORE_FILE" ]; then
+  echo "没有设置签名的环境变量DAIRO_KEYSTORE_FILE,不能编译正式版"
   exit 1
 fi
 

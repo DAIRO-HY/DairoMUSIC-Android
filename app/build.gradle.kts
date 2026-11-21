@@ -107,23 +107,23 @@ class SigningInfo(val storeFile: File, val storePassword: String, val keyAlias: 
  * 读取签名信息,优先使用环境变量,其次是项目根目录的keystore.properties,都没有时返回null
  *
  * 环境变量(Jenkins里用凭据注入):
- *   DAIRO_MUSIC_KEYSTORE_FILE      签名文件的路径
- *   DAIRO_MUSIC_KEYSTORE_PASSWORD  签名文件的密码
- *   DAIRO_MUSIC_KEY_ALIAS          密钥别名
- *   DAIRO_MUSIC_KEY_PASSWORD       密钥的密码
+ *   DAIRO_KEYSTORE_FILE      签名文件的路径
+ *   DAIRO_KEYSTORE_PASSWORD  签名文件的密码
+ *   DAIRO_KEY_ALIAS          密钥别名
+ *   DAIRO_KEY_PASSWORD       密钥的密码
  *
  * keystore.properties(格式见keystore.properties.example):
  *   storeFile、storePassword、keyAlias、keyPassword,storeFile可以写相对于项目根目录的路径
  */
 fun signingInfo(): SigningInfo? {
     val env = System.getenv()
-    val envFile = env["DAIRO_MUSIC_KEYSTORE_FILE"]
+    val envFile = env["DAIRO_KEYSTORE_FILE"]
     if (!envFile.isNullOrEmpty()) {
         return SigningInfo(
             rootProject.file(envFile),
-            env["DAIRO_MUSIC_KEYSTORE_PASSWORD"] ?: error("缺少环境变量DAIRO_MUSIC_KEYSTORE_PASSWORD"),
-            env["DAIRO_MUSIC_KEY_ALIAS"] ?: error("缺少环境变量DAIRO_MUSIC_KEY_ALIAS"),
-            env["DAIRO_MUSIC_KEY_PASSWORD"] ?: error("缺少环境变量DAIRO_MUSIC_KEY_PASSWORD"),
+            env["DAIRO_KEYSTORE_PASSWORD"] ?: error("缺少环境变量DAIRO_KEYSTORE_PASSWORD"),
+            env["DAIRO_KEY_ALIAS"] ?: error("缺少环境变量DAIRO_KEY_ALIAS"),
+            env["DAIRO_KEY_PASSWORD"] ?: error("缺少环境变量DAIRO_KEY_PASSWORD"),
         )
     }
     val file = rootProject.file("keystore.properties")
