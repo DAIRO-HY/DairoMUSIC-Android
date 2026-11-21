@@ -6,7 +6,6 @@ package cn.dairo.music.api
 object ApiConst {
 
     const val COMMON_CONFIG = "/api/common/config"
-    const val APP_VERSION_CHECK = "/api/app_version/check"
     const val EMAIL_SEND_CODE = "/api/email/send_code"
 
     const val USER_TEMP_LOGIN = "/api/user/temp_login"

@@ -2,7 +2,6 @@ package cn.dairo.music.api
 
 import cn.dairo.music.api.http.ApiHttp
 import cn.dairo.music.api.http.EmptyModel
-import cn.dairo.music.api.model.AppVersionModel
 import cn.dairo.music.api.model.ConfigModel
 import cn.dairo.music.constants.Const
 
@@ -11,11 +10,6 @@ object CommonApi {
     /** 获取服务器的公开配置,不需要登录 */
     fun config(): ApiHttp<ConfigModel> {
         return ApiHttp<ConfigModel>(ApiConst.COMMON_CONFIG, "GET").noAuth()
-    }
-
-    /** 检查更新,没有新版本时返回null */
-    fun checkVersion(): ApiHttp<AppVersionModel?> {
-        return ApiHttp<AppVersionModel?>(ApiConst.APP_VERSION_CHECK, "GET", mapOf("clientFlag" to Const.CLIENT_FLAG, "versionCode" to Const.versionCode)).noAuth()
     }
 
     /** 发送邮箱验证码 type:register:注册 reset_pwd:重置密码 bind_email:绑定邮箱 */

@@ -4,4 +4,8 @@
     <cache-path
         name="send_file"
         path="send_file/" />
+    <!--检查更新时下载的新版本APK,交给系统安装界面,见AppUpdateUtil-->
+    <cache-path
+        name="update"
+        path="update/" />
 </paths>

@@ -9,6 +9,9 @@
     <uses-permission android:name="android.permission.FOREGROUND_SERVICE_MEDIA_PLAYBACK" />
     <uses-permission android:name="android.permission.WAKE_LOCK" />
 
+    <!--检查更新后安装下载的新版本-->
+    <uses-permission android:name="android.permission.REQUEST_INSTALL_PACKAGES" />
+
     <!--Android 9及以下把下载的视频保存到相册需要的权限,Android 10开始不需要-->
     <uses-permission
         android:name="android.permission.WRITE_EXTERNAL_STORAGE"
@@ -54,7 +57,7 @@
             </intent-filter>
         </service>
 
-        <!--发送下载的文件、分享-->
+        <!--发送下载的文件、分享、安装检查更新下载的APK-->
         <provider
             android:name="androidx.core.content.FileProvider"
             android:authorities="${applicationId}.file_provider"
